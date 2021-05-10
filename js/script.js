@@ -1,18 +1,23 @@
-function checkAge(age) {
+function checkStorage(available, ordered) {
     let message;
-
-    if (age >= 18) { // Change this line
-        message = 'You are an adult';
+    // Change code below this line
+    if (available < ordered) {
+        message = "Not enough goods in stock!"
     } else {
-        message = 'You are a minor';
+        message = "Order is processed, our manager will contact you."
     }
-
+    // Change code above this line
     return message;
 }
+}
 
-/*Инструкция if...else
+/*Задача: склад товаров
+Задание
+Функция checkStorage(available, ordered) проверяет возможность оформления заказа и возвращает сообщение о результате. Она объявляет два параметра, значения которых будут задаваться во время её вызова:
 
-Добавь выражение проверки совершеннолетия пользователя, значения параметра age, в условие для инструкции if.
+available - общее количество товаров на складе
+ordered - единиц товара в заказе
+Используя ветвления дополни код функции так, что:
 
-Если пользователь совершеннолетний, должен выполняться блок if и в переменную message записывается строка "You are an adult".
-В противном случае должен выполняться блок else и записывается строка "You are a minor".*/
+Если в заказе указано число, превышающее количество товаров на складе, в переменную message записывается строка "Not enough goods in stock!".
+В противном случае записывается строка "Order is processed, our manager will contact you."..*/
