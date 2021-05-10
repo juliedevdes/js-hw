@@ -1,28 +1,39 @@
-function makeTransaction(pricePerDroid, orderedQuantity, customerCredits) {
+function checkPassword(password) {
+    const ADMIN_PASSWORD = 'jqueryismyjam';
     let message;
-    // Change code below this line
-    totalPrice = (pricePerDroid * orderedQuantity);
-    if (totalPrice > customerCredits) {
-        message = `Insufficient funds!`;
+
+    if (password === null) { // Change this line
+        message = 'Canceled by user!';
+    } else if (password === ADMIN_PASSWORD) { // Change this line
+        message = 'Welcome!';
     } else {
-        message = `You ordered ${orderedQuantity} droids, you have ${(customerCredits - totalPrice)} credits left`;
+        message = 'Access denied, wrong password!';
     }
-    // Change code above this line
+
     return message;
 }
 
-/*  Задание
-Станция по продаже ремонтных дроидов готова к запуску, осталось написать программное обеспечение для отдела продаж.
+/* Конструкция if...else может проверить и среагировать на выполнение или невыполнение только одного условия.
 
-Функция makeTransaction(pricePerDroid, orderedQuantity, customerCredits) выполняет транзакцию по продаже дроидов и возвращает сообщение о результате операции. Она объявляет три параметра, значения которых будут задаваться во время её вызова:
+let cost;
+const subscription = "pro";
 
-pricePerDroid - цена одного дроида
-orderedQuantity - кол-во заказанных дроидов
-customerCredits - сумма средств на счету клиента
-Дополни её следующим функционалом:
 
-Объяви переменную totalPrice для хранения общей суммы заказа и присвой ей выражение расчёта этой суммы.
-Добавь проверку сможет ли клиент оплатить заказ:
-если сумма к оплате превышает количество кредитов на счету клиента, запиши в переменную message строку "Insufficient funds!";
-в противном случае, вычти сумму покупки со счёта клиента и запиши в переменную message сообщение: "You ordered <число> droids, you have <число> credits left".
+Блок else...if позволяет добавить после else еще один оператор if с условием. 
+В конце цепочки может быть классический блок else, который выполнится только в случае, когда ни одно из условий не приведётся к true.
+
+let cost;
+const subscription = "premium";
+
+if (subscription === "free") {
+  cost = 0;
+} else if (subscription === "pro") {
+  cost = 100;
+} else if (subscription === "premium") {
+  cost = 500;
+} else {
+  console.log(`Invalid subscription type - ${subscription}`);
+}
+
+console.log(cost); // 500
 */
