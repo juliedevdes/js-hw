@@ -1,23 +1,28 @@
-function checkStorage(available, ordered) {
+function makeTransaction(pricePerDroid, orderedQuantity, customerCredits) {
     let message;
     // Change code below this line
-    if (available < ordered) {
-        message = "Not enough goods in stock!"
+    totalPrice = (pricePerDroid * orderedQuantity);
+    if (totalPrice > customerCredits) {
+        message = `Insufficient funds!`;
     } else {
-        message = "Order is processed, our manager will contact you."
+        message = `You ordered ${orderedQuantity} droids, you have ${(customerCredits - totalPrice)} credits left`;
     }
     // Change code above this line
     return message;
 }
 
+/*  Задание
+Станция по продаже ремонтных дроидов готова к запуску, осталось написать программное обеспечение для отдела продаж.
 
-/*Задача: склад товаров
-Задание
-Функция checkStorage(available, ordered) проверяет возможность оформления заказа и возвращает сообщение о результате. Она объявляет два параметра, значения которых будут задаваться во время её вызова:
+Функция makeTransaction(pricePerDroid, orderedQuantity, customerCredits) выполняет транзакцию по продаже дроидов и возвращает сообщение о результате операции. Она объявляет три параметра, значения которых будут задаваться во время её вызова:
 
-available - общее количество товаров на складе
-ordered - единиц товара в заказе
-Используя ветвления дополни код функции так, что:
+pricePerDroid - цена одного дроида
+orderedQuantity - кол-во заказанных дроидов
+customerCredits - сумма средств на счету клиента
+Дополни её следующим функционалом:
 
-Если в заказе указано число, превышающее количество товаров на складе, в переменную message записывается строка "Not enough goods in stock!".
-В противном случае записывается строка "Order is processed, our manager will contact you."..*/
+Объяви переменную totalPrice для хранения общей суммы заказа и присвой ей выражение расчёта этой суммы.
+Добавь проверку сможет ли клиент оплатить заказ:
+если сумма к оплате превышает количество кредитов на счету клиента, запиши в переменную message строку "Insufficient funds!";
+в противном случае, вычти сумму покупки со счёта клиента и запиши в переменную message сообщение: "You ordered <число> droids, you have <число> credits left".
+*/
