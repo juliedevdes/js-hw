@@ -1,7 +1,8 @@
-let productName = "Droid";
-let pricePerItem = 2000;
+const pricePerItem = 3500;
+const orderedQuantity = 4;
 
 // Change code below this line
+const totalPrice = (pricePerItem * orderedQuantity);
 
-productName = "Repair droid";
-pricePerItem = 3500;
+
+/* математические операторы и операнды */
