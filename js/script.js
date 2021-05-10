@@ -1,16 +1,18 @@
-function makeOrderMessage(orderedQuantity, pricePerDroid, deliveryFee) {
+function isAdult(age) {
     // Change code below this line
-    const totalPrice = (pricePerDroid * orderedQuantity + deliveryFee);
-    const message = `You ordered droids worth ${totalPrice} credits. Delivery (${deliveryFee} credits) is included in total price.`;
+    const passed = (age >= 18);
 
     // Change code above this line
-    return message;
+    return passed;
 }
-/* Оператор RETURN WTF ?????
+/* Операторы сравнения >, >=, < и <=
+Используются для сравнения двух значений. Результатом своего выполнения возвращают буль - true или false, то есть «да» или «нет».
 
-Оператор return используется для передачи значения из тела функции во внешний код. 
-Когда интерпретатор встречает return, он сразу же выходит из функции (прекращает её выполнение), 
-и возвращает указанное значение в то место кода, где функция была вызвана.
+> - больше
+< - меньше
+>= - больше или равно
+<= - меньше или равно
 
-Оператор return без явно указанного значения возвращает специальное значение undefined. При отсутствии return в теле функции, она все равно вернёт undefined.
-*/
+Функция isAdult объявляет один параметр age (возраст), значение которого будет задаваться во время её вызова. 
+Присвой переменной passed выражение проверки возраста пользователя на совершеннолетие. 
+Человек считается совершеннолетним в возрасте 18 лет и старше.*/
