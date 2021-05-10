@@ -1,16 +1,11 @@
-function add(a, b, c) {
+function makeOrderMessage(orderedQuantity, pricePerDroid, deliveryFee) {
     // Change code below this line
-
-    return a + b + c;
+    const totalPrice = (pricePerDroid * orderedQuantity + deliveryFee);
+    const message = `You ordered droids worth ${totalPrice} credits. Delivery (${deliveryFee} credits) is included in total price.`;
 
     // Change code above this line
+    return message;
 }
-
-add(2, 5, 8); // 15
-
-console.log(add(15, 27, 10));
-console.log(add(10, 20, 30));
-console.log(add(5, 10, 15));
 /* Оператор RETURN WTF ?????
 
 Оператор return используется для передачи значения из тела функции во внешний код. 
