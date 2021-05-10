@@ -1,15 +1,18 @@
-function isValidPassword(password) {
-    const SAVED_PASSWORD = 'jqueryismyjam';
-    // Change code below this line
-    const isMatch = (password === SAVED_PASSWORD);
+function checkAge(age) {
+    let message;
 
-    // Change code above this line
-    return isMatch;
+    if (age >= 18) { // Change this line
+        message = 'You are an adult';
+    } else {
+        message = 'You are a minor';
+    }
+
+    return message;
 }
-/*Операторы сравнения === и !==
-«Нестрогие» операторы == и != выполняют преобразование типов сравниваемых значений, что может привести к ошибкам, особенно у начинающих.
 
+/*Инструкция if...else
 
-Поэтому для проверки равенства или неравенства двух значений используются операторы
- === (строгое равенство) и
- !== (строгое неравенство), которые не выполняют приведение типов операндов.*/
+Добавь выражение проверки совершеннолетия пользователя, значения параметра age, в условие для инструкции if.
+
+Если пользователь совершеннолетний, должен выполняться блок if и в переменную message записывается строка "You are an adult".
+В противном случае должен выполняться блок else и записывается строка "You are a minor".*/
