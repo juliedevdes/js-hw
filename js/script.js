@@ -9,7 +9,7 @@ function checkStorage(available, ordered) {
     // Change code above this line
     return message;
 }
-}
+
 
 /*Задача: склад товаров
 Задание
