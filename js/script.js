@@ -1,14 +1,15 @@
-function isNumberInRange(start, end, number) {
-    const isInRange = (number >= start && number <= end); // Change this line
+function checkIfCanAccessContent(subType) {
+    const canAccessContent = (subType === "pro" || subType === "vip"); // Change this line
 
-    return isInRange;
+    return canAccessContent;
 }
+/* Оператор || приводит все операнды к булю и возвращает значение одного из них. Левый операнд, если его можно привести к true, и правый в остальных случаях.
 
-/* Функция isNumberInRange(start, end, number) проверяет, входит ли число в промежуток. Она объявляет три параметра, значения которых будут задаваться во время её вызова:
+Функция checkIfCanAccessContent(subType) проверяет, может ли пользователь получить доступ к контенту. Проверка происходит по типу подписки.
+Получить доступ могут только пользователи с подпиской pro или vip.
 
-number - число, вхождение которого проверяется
-start - начало числового промежутка
-end - конец числового промежутка
-Присвой переменной isInRange выражение проверки вхождения number в числовой промеждуток от start до end. 
-То есть число должно быть больше либо равно start и меньше либо равно end. Результатом выражения проверки будет буль true или false..
+Присвой переменной canAccessContent выражение проверки подписки. Если значение параметра subType равно строкам "pro" или "vip",
+пользователь получит доступ. Результатом выражения проверки будет буль true или false.
+
+Тесты
 */
