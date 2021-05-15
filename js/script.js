@@ -1,13 +1,19 @@
-function checkForName(fullName, name) {
-    const result = fullName.includes(name); // Change this line
+function checkForSpam(message) {
+    let result;
+    // Change code below this line
+    const normMessage = message.toLowerCase();
+    result = normMessage.includes("spam") || normMessage.includes("sale");
+
+    // Change code above this line
     return result;
 }
 
+
 /*
+Функция checkForSpam(message) принимает строку (параметр message), проверяет её на содержание запрещенных слов spam и sale, и возвращает результат проверки. Слова в строке параметра message могут быть в произвольном регистре, например SPAM или sAlE.
 
-
-Метод строк includes(substring) проверяет входит ли подстрока substring в строку, возвращает буль - true если входит и false в противном случае. 
-Регистр символов в строке и подстроке имеет значение, так как например буква "a" не равна букве "А".
+Если нашли запрещенное слово (spam или sale) то функция возвращает буль true.
+Если в строке нет запрещенных слов, функция возвращает буль false.
 
 
 */
