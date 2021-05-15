@@ -1,39 +1,24 @@
-function checkPassword(password) {
-    const ADMIN_PASSWORD = 'jqueryismyjam';
+function checkStorage(available, ordered) {
     let message;
-
-    if (password === null) { // Change this line
-        message = 'Canceled by user!';
-    } else if (password === ADMIN_PASSWORD) { // Change this line
-        message = 'Welcome!';
+    // Change code below this line
+    if (ordered === 0) {
+        message = 'There are no products in the order!';
+    } else if (ordered >= available) {
+        message = 'Your order is too large, there are not enough items in stock!';
     } else {
-        message = 'Access denied, wrong password!';
+        message = 'The order is accepted, our manager will contact you';
     }
-
+    // Change code above this line
     return message;
 }
 
-/* Конструкция if...else может проверить и среагировать на выполнение или невыполнение только одного условия.
+/* Функция checkStorage(available, ordered) проверяет возможность оформления заказа и возвращает сообщение о результате. Она объявляет два параметра, значения которых будут задаваться во время её вызова.
 
-let cost;
-const subscription = "pro";
+available - доступное количество товаров на складе
+ordered - единиц товара в заказе
+Используя ветвления дополни код функции так, что:
 
-
-Блок else...if позволяет добавить после else еще один оператор if с условием. 
-В конце цепочки может быть классический блок else, который выполнится только в случае, когда ни одно из условий не приведётся к true.
-
-let cost;
-const subscription = "premium";
-
-if (subscription === "free") {
-  cost = 0;
-} else if (subscription === "pro") {
-  cost = 100;
-} else if (subscription === "premium") {
-  cost = 500;
-} else {
-  console.log(`Invalid subscription type - ${subscription}`);
-}
-
-console.log(cost); // 500
+Если в заказе еще нет товаров, то есть значение параметра ordered равно 0, в переменную message присваивается строка "There are no products in the order!".
+Eсли товаров в заказе больше чем доступно товаров на складе, то в переменную message присваивается строка "Your order is too large, there are not enough items in stock!".
+В противном случае в переменную message присваевается строка "The order is accepted, our manager will contact you".
 */
