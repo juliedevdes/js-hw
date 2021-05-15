@@ -1,14 +1,21 @@
-function getSubstring(string, length) {
-    const substring = (string.slice(string, length)); // Change this line
+function formatMessage(message, maxLength) {
+    let result;
+    // Change code below this line
 
-    return substring;
+    if (message.length > maxLength) {
+        result = message.slice(message, maxLength) + "...";
+    } else {
+        result = message
+    }
+
+    /// Change code above this line
+    return result;
 }
-/* Метод строк slice(startIndex, endIndex) используется для создания копии части или всей строки. 
-Он делает копию элементов строки от startIndex и до, но не включая endIndex и возвращает новую строку.
 
-Функция getSubstring(string, length) принимает строку и возвращает подстроку от начала и до length символов. Она объявляет два параметра, значения которых будут задаваться во время её вызова:
+/*Функция formatMessage(message, maxLength) принимает строку (параметр message) и форматирует её, если длина превышает значение в параметре maxLength.
 
-string - оригинальная строка
-length - количество символов с начала строки для подстроки
-Присвой переменной substring выражение создания подстроки длинной length символов (от начала) из строки string.
+Дополни код функции так, что если длина строки:
+
+не превышает maxLength, функция возвращает её в исходном виде.
+больше maxLength, то функция обрезает строку до maxLength символов и добавляет в конец троеточие "...", после чего возвращает укороченную версию.
 */
