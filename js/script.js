@@ -1,34 +1,38 @@
-function getSubscriptionPrice(type) {
-    let price;
+function checkPassword(password) {
+    const ADMIN_PASSWORD = "jqueryismyjam";
+    let message;
     // Change code below this line
 
-    switch (type) { // Change this line
-        case 'starter': // Change this line
-            price = 0; // Change this line
-            break;
-
-        case 'professional': // Change this line
-            price = 20; // Change this line
-            break;
-
-        case "organization": // Change this line
-            price = 50; // Change this line
-            break;
+    if (password === null) {
+        message = "Canceled by user!";
+    } else if (password === ADMIN_PASSWORD) {
+        message = "Welcome!";
+    } else {
+        message = "Access denied, wrong password!";
     }
 
     // Change code above this line
-    return price;
+    return message;
 }
+/* ======answer======= */
 
-/* Функция getSubscriptionPrice(type) получает строку с типом подписки пользователя (параметр type), проверяет её на совпадение с тремя возможными типами ежемесячной подписки и возвращает цену хранящуюся в переменной price.
+switch (password) {
+    case ADMIN_PASSWORD:
+        message = "Welcome!";
+        break;
 
-Если значение параметра type это строка:
+    case null:
+        message = "Canceled by user!"
+        break;
 
-"starter" - цена подписки 0 кредитов.
-"professional" - цена подписки 20 кредитов.
-"organization" - цена подписки 50 кредитов.
-Изначально в теле функции была инструкция if...else, которая выглядела вот так.
-В некоторых случаях неудобство чтения сложных ветвлений if...else можно избежать, используя более «плоский» синтаксис инструкции ветвления switch.
+    default:
+        message = "Access denied, wrong password!";
 
-Область применения switch ограничена задачами с одним общим вопросом (что сравнивать) и множеством вариантов ответов (с чем сравнивать).
+
+}
+/* Инструкция switch c блоком default
+
+Если ни одного совпадения значений не произошло, необходимо выполнить код по умолчанию, как в блоке else для инструкции if...else. 
+Для этого после всех блоков case добавляется блок default.
+Проведи рефакторинг кода, заменив инструкцию if..else на switch, и не забудь о блоке default (аналог else).
 */
