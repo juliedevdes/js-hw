@@ -1,21 +1,22 @@
-function formatMessage(message, maxLength) {
-    let result;
-    // Change code below this line
+function normalizeInput(input) {
+    const normalizedInput = input.toLowerCase(); // Change this line
 
-    if (message.length > maxLength) {
-        result = message.slice(message, maxLength) + "...";
-    } else {
-        result = message
-    }
-
-    /// Change code above this line
-    return result;
+    return normalizedInput;
 }
 
-/*Функция formatMessage(message, maxLength) принимает строку (параметр message) и форматирует её, если длина превышает значение в параметре maxLength.
+/*Бывают ситуации когда все символы в строке необходимо преобразовать в один регистр, верхний или нижний. Например, при поиске по ключевому слову, когда пользователь вводит строку 'saMsUng', а сравнить её надо со строкой 'samsung' или 'SAMSUNG'.
 
-Дополни код функции так, что если длина строки:
+console.log("saMsUng" === "samsung"); // false
+console.log("saMsUng" === "SAMSUNG"); // false
+Чтобы не требовать абсолютно точный ввод можно сделать «нормализацию» введённой пользователем строки, то есть преобразовать все её символы в верхний или нижний регистр. Методы строки toLowerCase() и toUpperCase() вернут новую строку в соответствующем регистре, не изменяя оригинальную.
 
-не превышает maxLength, функция возвращает её в исходном виде.
-больше maxLength, то функция обрезает строку до maxLength символов и добавляет в конец троеточие "...", после чего возвращает укороченную версию.
-*/
+const BRAND_NAME = "SAMSUNG";
+const userInput = "saMsUng";
+const normalizedToUpperCaseInput = userInput.toUpperCase();
+
+console.log(userInput); // 'saMsUng'
+console.log(userInput === BRAND_NAME); // false
+console.log(normalizedToUpperCaseInput); // 'SAMSUNG'
+console.log(normalizedToUpperCaseInput === BRAND_NAME); // true
+Задание
+Функция normalizeInput(input) принимает строку (параметр input) и возвращает такую же строку, но в нижнем регистре. Присвой переменной normalizedInput выражение создания строки в нижнем регистре из параметра input.*/
