@@ -1,22 +1,13 @@
-function normalizeInput(input) {
-    const normalizedInput = input.toLowerCase(); // Change this line
-
-    return normalizedInput;
+function checkForName(fullName, name) {
+    const result = fullName.includes(name); // Change this line
+    return result;
 }
 
-/*Бывают ситуации когда все символы в строке необходимо преобразовать в один регистр, верхний или нижний. Например, при поиске по ключевому слову, когда пользователь вводит строку 'saMsUng', а сравнить её надо со строкой 'samsung' или 'SAMSUNG'.
+/*
 
-console.log("saMsUng" === "samsung"); // false
-console.log("saMsUng" === "SAMSUNG"); // false
-Чтобы не требовать абсолютно точный ввод можно сделать «нормализацию» введённой пользователем строки, то есть преобразовать все её символы в верхний или нижний регистр. Методы строки toLowerCase() и toUpperCase() вернут новую строку в соответствующем регистре, не изменяя оригинальную.
 
-const BRAND_NAME = "SAMSUNG";
-const userInput = "saMsUng";
-const normalizedToUpperCaseInput = userInput.toUpperCase();
+Метод строк includes(substring) проверяет входит ли подстрока substring в строку, возвращает буль - true если входит и false в противном случае. 
+Регистр символов в строке и подстроке имеет значение, так как например буква "a" не равна букве "А".
 
-console.log(userInput); // 'saMsUng'
-console.log(userInput === BRAND_NAME); // false
-console.log(normalizedToUpperCaseInput); // 'SAMSUNG'
-console.log(normalizedToUpperCaseInput === BRAND_NAME); // true
-Задание
-Функция normalizeInput(input) принимает строку (параметр input) и возвращает такую же строку, но в нижнем регистре. Присвой переменной normalizedInput выражение создания строки в нижнем регистре из параметра input.*/
+
+*/
