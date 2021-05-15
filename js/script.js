@@ -1,38 +1,46 @@
-function checkPassword(password) {
-    const ADMIN_PASSWORD = "jqueryismyjam";
+function getShippingCost(country) {
     let message;
     // Change code below this line
+    let price;
+    switch (country) {
+        case "China":
+            price = 100;
+            message = `Shipping to ${country} will cost ${price} credits`;
+            break;
 
-    if (password === null) {
-        message = "Canceled by user!";
-    } else if (password === ADMIN_PASSWORD) {
-        message = "Welcome!";
-    } else {
-        message = "Access denied, wrong password!";
+        case "Chile":
+            price = 250;
+            message = `Shipping to ${country} will cost ${price} credits`;
+            break;
+
+        case "Australia":
+            price = 170;
+            message = `Shipping to ${country} will cost ${price} credits`;
+            break;
+
+        case "Jamaica":
+            price = 120;
+            message = `Shipping to ${country} will cost ${price} credits`;
+            break;
+
+        default:
+            message = "Sorry, there is no delivery to your country";
     }
 
     // Change code above this line
     return message;
 }
-/* ======answer======= */
-
-switch (password) {
-    case ADMIN_PASSWORD:
-        message = "Welcome!";
-        break;
-
-    case null:
-        message = "Canceled by user!"
-        break;
-
-    default:
-        message = "Access denied, wrong password!";
 
 
-}
-/* Инструкция switch c блоком default
+/* Функция getShippingCost(country) должна проверять возможность доставки товара в страну пользователя (параметр country) и возвращать сообщение о результате хранящееся в переменной message. Обязательно используй инструкцию switch.
 
-Если ни одного совпадения значений не произошло, необходимо выполнить код по умолчанию, как в блоке else для инструкции if...else. 
-Для этого после всех блоков case добавляется блок default.
-Проведи рефакторинг кода, заменив инструкцию if..else на switch, и не забудь о блоке default (аналог else).
+Формат возвращаемой строки "Shipping to <country> will cost <price> credits", где вместо <country> и <price> необходимо подставить соотвествующие значения.
+
+Список стран и стоимость доставки:
+
+China - 100 кредитов
+Chile - 250 кредитов
+Australia - 170 кредитов
+Jamaica - 120 кредитов
+Из списка видно, что доставка есть не везде. Если указанной страны нет в списке, то функция должна вернуть строку "Sorry, there is no delivery to your country"
 */
