@@ -1,33 +1,18 @@
-const fruits = ['apple', 'plum', 'pear', 'orange', 'banana'];
+const oldClients = ['Mango', 'Ajax', 'Poly', 'Kiwi'];
+const newClients = ['Peach', 'Houston'];
 
-// Change code below this line
-const firstTwoEls = fruits.slice(0, 2);
-const nonExtremeEls = fruits.slice(1, 4);
-const lastThreeEls = fruits.slice(2);
-
-
-const result = lastThreeEls;
-
-console.log(result);
+const allClients = oldClients.concat(newClients); // Change this line
 /*
-Метод slice()
-Метод slice(begin, end) возвращает новый массив, содержащий копию части исходного массива, не изменяя его. Копия делается от begin и до, но не включая, end - индексы элементов исходного массива.
+Метод concat()
+Метод concat используется для объединения двух или более массивов. Он не изменяет массив на котором вызывается, а возвращает новый. Порядок аргументов метода влияет на порядок элементов нового массива.
 
-Если begin и end не указаны, будет создана полная копия исходного массива.
-Если не указан end, копирование будет от start и до конца исходного массива.
-Если значение start отрицательное, а end не указан, то будут скопированы последние N элементов.
-const planets = ["Earth", "Mars", "Venus", "Jupiter", "Saturn"];
+const firstArray = ["Mercury", "Venus", "Earth"];
+const secondArray = ["Mars", "Jupiter"];
+const thirdArray = ["Saturn", "Uranus", "Neptune"];
+const allPlanets = firstArray.concat(secondArray, thirdArray);
 
-console.log(planets.slice(0, 2)); // ['Earth', 'Mars']
-console.log(planets.slice(0, 4)); // ['Earth', 'Mars', 'Venus', 'Jupiter']
-console.log(planets.slice(1, 3)); // ['Mars', 'Venus']
-console.log(planets.slice(-2)); // ['Jupiter', 'Saturn']
-console.log(planets.slice()); // ['Earth', 'Mars', 'Venus', 'Jupiter', 'Saturn']
+console.log(firstArray); // ['Mercury', 'Venus', 'Earth'];
+console.log(allPlanets); // ['Mercury', 'Venus', 'Earth', 'Mars', 'Jupiter', 'Saturn', 'Uranus', 'Neptune'];
 Задание
-Дополни код так, чтобы переменные содержали частичные копии исходного массива fruits.
-
-firstTwoEls - массив из первых двух элементов
-nonExtremeEls - массив из всех элементов кроме первого и последнего
-lastThreeEls - массив из трёх последних элементов
-
+Дополни код так, чтобы в переменной allClients получился массив всех элементов массивов oldClients и newClients.
 */
