@@ -1,27 +1,33 @@
-function slugify(title) {
-    // Change code below this line
-    const normtitle = title.toLowerCase();
-    const titlesp = normtitle.split(" ");
-    const slug = normtitle.join('-');
-    return slug;
-    // Change code above this line
-}
+const fruits = ['apple', 'plum', 'pear', 'orange', 'banana'];
+
+// Change code below this line
+const firstTwoEls = fruits.slice(0, 2);
+const nonExtremeEls = fruits.slice(1, 4);
+const lastThreeEls = fruits.slice(2);
 
 
-const result = slugify("I want sleep");
+const result = lastThreeEls;
 
 console.log(result);
-/*Задача: генератор slug
+/*
+Метод slice()
+Метод slice(begin, end) возвращает новый массив, содержащий копию части исходного массива, не изменяя его. Копия делается от begin и до, но не включая, end - индексы элементов исходного массива.
+
+Если begin и end не указаны, будет создана полная копия исходного массива.
+Если не указан end, копирование будет от start и до конца исходного массива.
+Если значение start отрицательное, а end не указан, то будут скопированы последние N элементов.
+const planets = ["Earth", "Mars", "Venus", "Jupiter", "Saturn"];
+
+console.log(planets.slice(0, 2)); // ['Earth', 'Mars']
+console.log(planets.slice(0, 4)); // ['Earth', 'Mars', 'Venus', 'Jupiter']
+console.log(planets.slice(1, 3)); // ['Mars', 'Venus']
+console.log(planets.slice(-2)); // ['Jupiter', 'Saturn']
+console.log(planets.slice()); // ['Earth', 'Mars', 'Venus', 'Jupiter', 'Saturn']
 Задание
-Термин slug - это человеко-понятный уникальный идентификатор, который используется в веб-разработке для создания читабельных URL-адесов.
+Дополни код так, чтобы переменные содержали частичные копии исходного массива fruits.
 
-Например, вместо того чтобы пользователь увидел в адресной строке mysite.com/posts/1q8fh74tx, можно сделать slug из названия статьи. В результате адрес получится более приятным для восприятия: mysite.com/posts/arrays-for-begginers.
+firstTwoEls - массив из первых двух элементов
+nonExtremeEls - массив из всех элементов кроме первого и последнего
+lastThreeEls - массив из трёх последних элементов
 
-Внимание
-Slug это всегда строка в нижнем регистре, слова которой разделены тире.
-
-Напиши функцию slugify(title) которая принимает заголовок статьи, параметр title, и возвращает slug, созданный из этой строки.
-
-Значением параметра title будут строки, слова которых разделены только пробелами
-Все символы slug должны быть в нижнем регистре
-Все слова slug должна быть разделены тире*/
+*/
