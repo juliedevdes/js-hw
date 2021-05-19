@@ -1,18 +1,16 @@
-function splitMessage(message, delimeter) {
-    let words;
+function calculateEngravingPrice(message, pricePerWord) {
     // Change code below this line
-    words = message.split(delimeter);
+
+    message = message.split(" ");
+    return message.length * pricePerWord;
     // Change code above this line
-    return words;
 }
+const result = calculateEngravingPrice("JavaScript is in my blood", 10);
 
-/*Метод строк split()
-Метод split(delimeter) позволяет превратить строку в массив, «разбив» его по разделителю delimeter. Если разделитель это пустая строка, то получится массив отдельных символов. Разделителем может быть один или несколько символов.
+console.log(result);
 
-const name = "Mango";
-console.log(name.split("")); // ["M", "a", "n", "g", "o"]
+/*Сервису гравировки украшений нужна функция, которая бы автоматически считала цену гравировки, в зависимости от количества слов и цены за слово.
 
-const message = "JavaScript essentials";
-console.log(message.split(" ")); // ["JavaScript", "essentials"]
-Задание
-Дополни код функции splitMessage(message, delimeter) так, чтобы она возвращала в переменной words результат разделения строки message по разделителю delimeter - массив строк.. */
+Объявлена функция calculateEngravingPrice(message, pricePerWord). Эта функция принимает строку, состоящую из слов разделённых только пробелами (параметр message) и цену гравировки одного слова (параметр pricePerWord).
+
+Напиши тело функции, чтобы она возвращала общую стоимость гравировки всех слов в строке. */
