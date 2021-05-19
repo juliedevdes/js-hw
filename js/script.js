@@ -1,16 +1,16 @@
-function calculateEngravingPrice(message, pricePerWord) {
+function makeStringFromArray(array, delimeter) {
+    let string;
     // Change code below this line
 
-    message = message.split(" ");
-    return message.length * pricePerWord;
+
+    string = array.join(delimeter);
     // Change code above this line
+    return string;
 }
-const result = calculateEngravingPrice("JavaScript is in my blood", 10);
+/*Метод массива join()
+Метод массивов join(delimeter) позволяет соединить элементы массива в строку. В строке элементы будут разделены символом или группой символов указанных в delimeter. То есть это операция обратная методу строк split(delimeter).
 
-console.log(result);
-
-/*Сервису гравировки украшений нужна функция, которая бы автоматически считала цену гравировки, в зависимости от количества слов и цены за слово.
-
-Объявлена функция calculateEngravingPrice(message, pricePerWord). Эта функция принимает строку, состоящую из слов разделённых только пробелами (параметр message) и цену гравировки одного слова (параметр pricePerWord).
-
-Напиши тело функции, чтобы она возвращала общую стоимость гравировки всех слов в строке. */
+const words = ["JavaScript", "is", "amazing"];
+console.log(words.join("")); // 'JavaScriptisamazing'
+console.log(words.join(" ")); // 'JavaScript is amazing'
+console.log(words.join("*")); // 'JavaScript*is*amazing' */
