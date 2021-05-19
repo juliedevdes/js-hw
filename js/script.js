@@ -1,18 +1,32 @@
-const oldClients = ['Mango', 'Ajax', 'Poly', 'Kiwi'];
-const newClients = ['Peach', 'Houston'];
+function makeArray(firstArray, secondArray, maxLength) {
+    // Change code below this line
+    const allArray = firstArray.concat(secondArray);
+    if (allArray.length > maxLength) {
+        return allArray.slice(0, maxLength);;
+    } else {
+        return allArray;
+    }
+    // Change code above this line
+}
+const result = makeArray(["Mango", "Poly"], ["Ajax", "Chelsea"], 2);
+console.log(result);
 
-const allClients = oldClients.concat(newClients); // Change this line
 /*
-Метод concat()
-Метод concat используется для объединения двух или более массивов. Он не изменяет массив на котором вызывается, а возвращает новый. Порядок аргументов метода влияет на порядок элементов нового массива.
 
-const firstArray = ["Mercury", "Venus", "Earth"];
-const secondArray = ["Mars", "Jupiter"];
-const thirdArray = ["Saturn", "Uranus", "Neptune"];
-const allPlanets = firstArray.concat(secondArray, thirdArray);
 
-console.log(firstArray); // ['Mercury', 'Venus', 'Earth'];
-console.log(allPlanets); // ['Mercury', 'Venus', 'Earth', 'Mars', 'Jupiter', 'Saturn', 'Uranus', 'Neptune'];
+
+Задача: композиция массивов
 Задание
-Дополни код так, чтобы в переменной allClients получился массив всех элементов массивов oldClients и newClients.
+Напиши функцию makeArray(firstArray, secondArray, maxLength) для создания нового массива со всеми элементами двух исходных firstArray и secondArray. 
+Параметр maxLength содержит максимально допустимую длину нового массива.
+
+Если количество элементов нового массива больше maxLength, функция должна вернуть копию массива длиной maxLength элементов. 
+В противном случае функция должна вернуть новый массив целиком.
+
+
+функ :
+
+1- объединяет 1 2 ряда
+
+2 если ряд больше максленф - обрезает
 */
