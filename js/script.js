@@ -1,12 +1,18 @@
-function getExtremeElements(array) {
-    const fistEl = array[0];
-    const lastEl = array[array.length - 1];
-    return [fistEl, lastEl];
-
+function splitMessage(message, delimeter) {
+    let words;
+    // Change code below this line
+    words = message.split(delimeter);
+    // Change code above this line
+    return words;
 }
 
-const check = getExtremeElements([2, 5, 7]);
-console.log(check);
+/*Метод строк split()
+Метод split(delimeter) позволяет превратить строку в массив, «разбив» его по разделителю delimeter. Если разделитель это пустая строка, то получится массив отдельных символов. Разделителем может быть один или несколько символов.
 
-/*Напиши функцию getExtremeElements(array) которая принимает один параметр array - массив элементов произвольной длины. 
-Функция должна возвращать массив из двух элементов - первого и последнего элемента параметра array. */
+const name = "Mango";
+console.log(name.split("")); // ["M", "a", "n", "g", "o"]
+
+const message = "JavaScript essentials";
+console.log(message.split(" ")); // ["JavaScript", "essentials"]
+Задание
+Дополни код функции splitMessage(message, delimeter) так, чтобы она возвращала в переменной words результат разделения строки message по разделителю delimeter - массив строк.. */
