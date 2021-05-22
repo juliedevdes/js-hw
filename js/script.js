@@ -1,39 +1,31 @@
 /*
 
-Задача: поиск самого длинного слова
-Задание
-Напиши функцию findLongestWord(string) которая принимает произвольную строку состоящую только из слов разделённых пробелом (параметр string)
- 
-и возвращает самое длинное слово в этой строке.
+===== ЗАДАНИЕ ======
 
+Задача: фильтрация массива чисел
+
+Напиши функцию filterArray(numbers, value), которая принимает массив чисел (параметр numbers)
+и возвращает новый массив, в котором будут только те элементы массива numbers, которые больше чем значение параметра value (число).
 */
 
-function findLongestWord(string) {
-    const arrayString = string.split(" ");
-    let longestWord = arrayString[0];
-    for (let i = 0; i < arrayString.length; i += 1) {
-        if (longestWord.length < arrayString[i].length) {
-            longestWord = arrayString[i];
+function filterArray(numbers, value) {
+    // Change code below this line
+    let filteredArray = [];
+    for (item of numbers) {
+        if (item > value) {
+            filteredArray.push(item);
         }
     }
-
-    return longestWord;
-
+    return filteredArray;
+    // Change code above this line
 }
-console.log(findLongestWord('Js is awsome'));
 
-// 1 разделить string на слова отдельные (" ") слова - const arrayString = string.split(" ");
+console.log(filterArray([8, 25, 85, 66, 3, 7], 19));
 
-// 2создать перемую логест ворд - let longestWord = arrayString[0]; будет возможно перезаписана(сначала в ней лежит часть массива с идентификатороом 0)
+// 1 cоздать переменную которую будет возвращать функция - там будет обновленный массив
 
-// 3 взять длину каждой чати массива(каждого слова) - через .length
+// 2 перебрать numbers циклом все по очереди
 
+// 3 сравнить на каждой итерации значение части массива с value
 
-// 4 сравнить ее с длиной следующей части массива и если он а больше - перезаписать переменную 
-//-  longestWord.length(длина текущего слова в переменной) < arrayString[i].length(длина другого, по очереди всех в массиве)      
-//◄ запихали это в if  / если true - то longestWord = arrayString[i]; перезаписали переменную
-
-
-// 5 повторить столько раз, сколько длина массива - (let i = 0; i < arrayString.length; i += 1)
-
-// 6 вернуть эту переменную логест ворд   -  return longestWord;
+// 4 создать условие в теле цикла - если больше value, то добавить в обновленный массив
