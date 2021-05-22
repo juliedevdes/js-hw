@@ -1,46 +1,30 @@
 /*
 
 ===== ЗАДАНИЕ ======
-Зачада: фильтрация массива чисел 2.0
-Задание
-Выполни рефакторинг функции filterArray(numbers, value) заменив цикл for на for...of.*/
+Задача: чётные числа
+
+Напиши функцию getEvenNumbers(start, end) которая возвращает массив всех чётных чисел от start до end. 
+Чётным считается число которое делится на 2 без остатка (10 % 2 === 0).*/
 
 
-/*старый вариант
-function filterArray(numbers, value) {
-  // Change code below this line
-  const filteredNumbers = [];
-
-  for (let i = 0; i < numbers.length; i += 1) {
-    const number = numbers[i];
-
-    if (number > value) {
-      filteredNumbers.push(number);
-    }
-  }
-
-  return filteredNumbers;
-  // Change code above this line
-}
-
-
-
-*/
-
-
-function filterArray(numbers, value) {
+function getEvenNumbers(start, end) {
     // Change code below this line
-    const filteredNumbers = [];
-    for (const number of numbers) {
 
-        if (number > value) {
-            filteredNumbers.push(number);
+    let evenNumbers = [];
+    for (let i = start; i <= end; i += 1) {
+        if (i % 2 === 0) {
+            evenNumbers.push(i);
         }
     }
 
-    return filteredNumbers;
-    // Change code above this line
+    return evenNumbers
+        // Change code above this line
 }
 
+console.log(getEvenNumbers(2, 45));
 
-console.log(filterArray([12, 12], 10));
+// 2 создать переменную для массива четных чисел. ретурнуть ее
+
+// 3 перебрать все числа от начала до конца, добавляя их при этом в массив если % 2 === 0
+
+// 4 вывести массив
