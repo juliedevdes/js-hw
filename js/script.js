@@ -1,20 +1,20 @@
-function calculateTotal(number) {
-    // Change code below this line
-    let sum = 0;
-    for (let i = 1; i <= number; i += 1) {
-        sum += i;
-    }
-    return sum;
-    // Change code above this line
-}
+const fruits = ['apple', 'plum', 'pear', 'orange'];
 
-const result = calculateTotal(20);
-console.log(result);
+for (let i = 0; i < fruits.length; i += 1) { // Change this line
+    const fruit = fruits[i]; // Change this line
+    console.log(fruit);
+}
 /*
 
-Напиши функцию calculateTotal(number), которая принимает целое число (параметр number)
-и возвращает сумму всех целых чисел от единицы и до этого числа. 
+Итерация по массиву
+Цикл for можно использовать для итерации по массиву, то есть «перебрать» его поэлементно.
 
-Например, если number равно 3, то сумма это 1 + 2 + 3, то есть 6.
+const planets = ["Earth", "Mars", "Venus"];
+
+for (let i = 0; i < planets.length; i += 1) {
+  console.log(planets[i]);
+}
+Для доступа к элементам используется синтаксис квадратных скобок массив[индекс], 
+где индекс - это значение счётчика цикла от 0 и до последнего индекса массива, который на единицу меньше длины массива.
 
 */
