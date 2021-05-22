@@ -1,30 +1,69 @@
 /*
+Оператор break vs return в функции
+Если цикл находится в теле функции, то оператор break не прекращает выполнение функции, а только прервёт цикл. Для того чтобы прерывать выполнение сразу цикла и функции есть оператор return.
 
-===== ЗАДАНИЕ ======
-Задача: чётные числа
-
-Напиши функцию getEvenNumbers(start, end) которая возвращает массив всех чётных чисел от start до end. 
-Чётным считается число которое делится на 2 без остатка (10 % 2 === 0).*/
+В примере ищем число 3. Как только выполнится условие if, делаем возврат, который прервёт выполнение цикла и функции.
 
 
-function getEvenNumbers(start, end) {
+*/
+
+/*
+
+function fn() {
+  for (let i = 0; i <= 5; i += 1) {
+    console.log(i);
+
+    if (i === 3) {
+      console.log("Нашли число 3, делаем возврат, прерывая цикл и функцию");
+      return i;
+    }
+  }
+
+  // Этот console.log не выполнится
+  console.log("Лог после цикла в теле функции");
+}
+
+const result = fn();
+console.log("Лог после выхода из функции");
+console.lof(`Результат выполнения функции ${result}`);
+
+==== ЗАДАНИЕ ====
+
+Выполни рефакторинг функции findNumber(start, end, divisor) так, чтобы она:
+
+возвращала первое число от start до end, которое делится на divisor без остатка
+не использовала оператор break
+не использовала переменную number
+*/
+/*
+
+function findNumber(start, end, divisor) {
+  // Change code below this line
+  let number;
+
+  for (let i = start; i < end; i += 1) {
+    if (i % divisor === 0) {
+      number = i;
+      break;
+    }
+  }
+
+  return number;
+  // Change code above this line
+}
+
+
+*/
+function findNumber(start, end, divisor) {
     // Change code below this line
+    let number;
 
-    let evenNumbers = [];
-    for (let i = start; i <= end; i += 1) {
-        if (i % 2 === 0) {
-            evenNumbers.push(i);
+    for (let i = start; i < end; i += 1) {
+        if (i % divisor === 0) {
+            return i;
         }
     }
 
-    return evenNumbers
-        // Change code above this line
+    return i;
+    // Change code above this line
 }
-
-console.log(getEvenNumbers(2, 45));
-
-// 2 создать переменную для массива четных чисел. ретурнуть ее
-
-// 3 перебрать все числа от начала до конца, добавляя их при этом в массив если % 2 === 0
-
-// 4 вывести массив
