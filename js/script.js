@@ -1,69 +1,26 @@
 /*
-Оператор break vs return в функции
-Если цикл находится в теле функции, то оператор break не прекращает выполнение функции, а только прервёт цикл. Для того чтобы прерывать выполнение сразу цикла и функции есть оператор return.
-
-В примере ищем число 3. Как только выполнится условие if, делаем возврат, который прервёт выполнение цикла и функции.
-
-
-*/
-
-/*
-
-function fn() {
-  for (let i = 0; i <= 5; i += 1) {
-    console.log(i);
-
-    if (i === 3) {
-      console.log("Нашли число 3, делаем возврат, прерывая цикл и функцию");
-      return i;
-    }
-  }
-
-  // Этот console.log не выполнится
-  console.log("Лог после цикла в теле функции");
-}
-
-const result = fn();
-console.log("Лог после выхода из функции");
-console.lof(`Результат выполнения функции ${result}`);
 
 ==== ЗАДАНИЕ ====
+Задача: функция includes()
 
-Выполни рефакторинг функции findNumber(start, end, divisor) так, чтобы она:
+Напиши функцию includes(array, value), которая делает тоже самое, что и метод массива массив.includes(значение) - проверяет, есть ли в массиве array значение value, возвращая true если есть и false в противном случае.
 
-возвращала первое число от start до end, которое делится на divisor без остатка
-не использовала оператор break
-не использовала переменную number
+При выполнении этой задачи в теле функции includes() нельзя использовать метод массив.includes(значение).
 */
-/*
 
-function findNumber(start, end, divisor) {
-  // Change code below this line
-  let number;
-
-  for (let i = start; i < end; i += 1) {
-    if (i % divisor === 0) {
-      number = i;
-      break;
-    }
-  }
-
-  return number;
-  // Change code above this line
-}
-
-
-*/
-function findNumber(start, end, divisor) {
+function includes(array, value) {
     // Change code below this line
-    let number;
-
-    for (let i = start; i < end; i += 1) {
-        if (i % divisor === 0) {
-            return i;
+    for (const item of array)
+        if (item === value) {
+            return true;
         }
-    }
-
-    return i;
+    return false;
     // Change code above this line
 }
+console.log(includes([12, 13, 15, 19, 78], 12));
+
+// 1 создать переменную которая будет хранить тру или фолз и возвращать в конце функции ее. дефолт = фолз
+
+// 2 цикл фороф - брать каждую штучку из array и сравнивать с value. если да, то прерывать и записывать в переменную тру
+
+// 3 вывести логом
