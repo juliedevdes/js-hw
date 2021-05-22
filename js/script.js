@@ -1,33 +1,20 @@
 /*
 
 ===== ЗАДАНИЕ ======
-
-Задание
-Общими элементами массивов называют те элементы, которые присутствуют во всех массивах.
-
-Например, в двух массивах [1, 3, 5] и [0, 8, 5, 3] общими будут числа 3 и 5, т.к. они присутствуют в обоих исходных массивах. 
-А числа 0, 1 и 8 присутствуют только в одном из массивов.
-
-Напиши функцию getCommonElements(array1, array2) которая получает два массива произвольной длины в параметры array1 и array2, 
-и возвращает новый массив, состоящий из тех элементов, которые присутствуют в обоих исходных массивах.
+Выполни рефакторинг кода функции calculateTotalPrice(order) заменив цикл for на for...of.
 */
 
-function getCommonElements(array1, array2) {
+function calculateTotalPrice(order) {
+    let total = 0;
     // Change code below this line
-    let commonElements = [];
-    for (item of array1) {
-        if (array2.includes(item)) {
-            commonElements.push(item);
-        }
+
+    for (const item of order) {
+        total += item;
     }
-    return commonElements
-        // Change code above this line
+
+    // Change code above this line
+    return total;
 }
 
-console.log(getCommonElements([8, 25, 85, 66, 3, 7], [66, 26, 6, 3, 8, 10]));
 
-// 1 cоздать переменную которую будет возвращать функция - там будет обновленный массив c общими элементами
-
-// 2 перебрать array1 циклом все по очереди и проверить включенность includes с array2
-
-// 3 если есть одинаковые - записать в новый массив
+console.log(calculateTotalPrice([12, 12]));
