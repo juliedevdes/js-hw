@@ -1,19 +1,26 @@
 "use strict";
 
-/// ======Задача подсчет свойств 2====
 
 
-// Задача. Подсчёт свойств 2.0
-// Задание
-// Выполни рефакторинг функции countProps(object) используя метод Object.keys() и, возможно, цикл for...of.
+const colors = [
+    { hex: '#f44336', rgb: '244,67,54' },
+    { hex: '#2196f3', rgb: '33,150,243' },
+    { hex: '#4caf50', rgb: '76,175,80' },
+    { hex: '#ffeb3b', rgb: '255,235,59' },
+];
+const hexColors = [];
+const rgbColors = [];
 
-function countProps(object) {
-    // Change code below this line
-    let propCount = Object.keys(object);
-    return propCount.length;
-    // Change code above this line
+for (const color of colors) {
+    hexColors.push(color.hex);
+    rgbColors.push(color.rgb);
+
+
 }
 
-console.log(countProps({ name: 'GAry', age: 12, booklist: { rating: 5, home: 'Los Angeles' } })); //3
+console.log(hexColors);
 
-//получается, Object.keys(object) сразу берет только hasOwnProperties = true///&&
+const color = { hex: '#f44336', rgb: '244,67,54' };
+
+console.log(color['rgb']);
+// ???????
