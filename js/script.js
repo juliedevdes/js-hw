@@ -3,33 +3,37 @@
 /// ======Задача подсчет свойств====
 
 
-/*
-Задание
-Напиши функцию countProps(object), которая считает и возвращает количество собственных свойств объекта в параметре object.
-Используй переменную propCount для хранения количества свойств объекта.
-
-*/
-
-function countProps(object) {
-    let propCount = 0;
-    // Change code below this line
-    for (const key in object) {
-        if (object.hasOwnProperty(key)) {
-            propCount += 1;
-        }
-    }
-    // Change code above this line
-    return propCount;
-}
-console.log(countProps({ name: "Mango", age: 2 }));
-
 /* 
-1 перебрать свойства объкта фор ин 
-
-2 поставить условие - если true hasOwnObjects. дейтсвительно собственное свойство или нет
-
-3 если да - добавить в переменную 1
-
-4 вернуть переменную с подсчетом
-
+Перебери объект apartment используя метод Object.keys() и цикл for...of. 
+Запиши в переменную keys массив ключей собственных свойств объекта apartment, и добавь в массив values все значения его свойств.
 */
+
+
+// const book = {
+//     title: 'Последнее королевство',
+//     author: 'Бернард Корнуэлл',
+//     genres: ['историческая проза', 'приключения'],
+//     rating: 8.38,
+// };
+// const keys = Object.keys(book);
+
+// for (const key of keys) {
+//     // Ключ
+//     console.log(key);
+//     // Значение свойства
+//     console.log(book[key]);
+
+const apartment = {
+    descr: 'Spacious apartment in the city centre',
+    rating: 4,
+    price: 2153,
+};
+const values = [];
+// Change code below this line
+const keys = Object.keys(apartment);
+console.log(keys)
+
+for (const key of keys) {
+    values.push(apartment[key])
+}
+console.log(values);
