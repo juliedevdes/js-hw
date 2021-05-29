@@ -1,13 +1,11 @@
 "use strict";
 
-/*====== Коллекция значений свойства ======
+/*====== Общая стоимость товара ======
 
 Задание
 
-Напиши функцию getAllPropValues(propName) которая :
-►  принимает один параметр propName - имя (ключ) свойства. 
-►  должна вернуть массив всех значений свойства с таким именем из каждого объекта в массиве products. 
-►  eсли в объектах нет свойства с таким именем, функция должна вернуть пустой массив.*/
+Напиши функцию calculateTotalPrice(productName) которая принимает один параметр productName - название товара.
+ Функция должна вернуть общую стоимость (цена * количество) товара с таким именем из массива products.*/
 
 
 const products = [
@@ -17,49 +15,26 @@ const products = [
     { name: 'Grip', price: 1200, quantity: 9 },
 ];
 
-
-/// ===== РЕШЕНИЕ #1 =======
-// function getAllPropValues(propName) {
-//     const array = [];
-//     for (const product of products) { //1 перебираем объекты, как частичка массива. product = { name: 'Radar', price: 1300, quantity: 4 }
-//         const keys = Object.keys(product); // 2 делаем массив с ключей всех объктов в массиве, названий свойст
-//         //   console.log(keys);
-
-//         if (keys.includes(propName)) { // 3 спрашиваем есть ли в массиве свойст запрашиваемое
-//             array.push(product[propName]); // 4 пушим значение в новый массив если да
-//         }
-//     }
-//     return array; // 5 возвращаем новый массив
-// }
-
-// ====== решение №2, покороче
-function getAllPropValues(propName) {
-    const propValues = []; // 1 массив, который будем возвращать
-    for (const product of products) { // 2 перебираем объкты в массиве
-        for (const key in product) { // 3 перебираем свойтства в объектах
-            if (key == propName) { // 4 условие если свойство = задаваемое значение
-                propValues.push(product[propName]); /// 5 .. то пушим в новый массив
-            }
+function calculateTotalPrice(productName) {
+    // Пиши код ниже этой строки
+    for (const product of products) { //     { name: 'Radar', price: 1300, quantity: 4 },
+        if (product.name === productName) {
+            return (product.price * product.quantity)
         }
     }
-    return propValues;
+
+    return "There is no such a product";
+
 }
+console.log(calculateTotalPrice("Droid"));
 
-
-
-console.log(getAllPropValues("price"));
-console.log(getAllPropValues("тфьу"));
-console.log(getAllPropValues("name"));
-
-
-
-// const object = {
-//     name: 12,
-//     age: 13,
-// };
-
-// for (const key in object) {
-//     console.log(object['name']);
-
-
-// }
+/*
+ *  1 перебрал объкты в массиве
+ * 
+ *  2 епербрал имена в объектах... 
+ * 
+ *  3 ... и ЕСЛИ слвпадает с вводимым значением ► 
+ * 
+ *  4 ► ...выдал значения других свойст объекта умноженые друг на друга
+ * 
+ */
