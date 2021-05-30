@@ -1,22 +1,65 @@
 "use strict";
 
-/*====== Изменение имени переменной ======
+/*====== Деструктуризация в циклах  ======
 
-Деструктуризация + дефол
-Замени объявления переменных highYesterday, highToday, highTomorrow и highIcon одной операцией деструктуризации свойств объекта highTemperatures. 
-Задай значение по умолчанию для highIcon - строку "https://www.flaticon.com/svg/static/icons/svg/2204/2204346.svg".*/
 
-const highTemperatures = {
-    yesterday: 28,
-    today: 26,
-    tomorrow: 33,
-};
+
+
+// const books = [{
+//         title: "Последнее королевство",
+//         author: "Бернард Корнуэлл",
+//         rating: 8.38,
+//     },
+//     {
+//         title: "На берегу спокойных вод",
+//         author: "Роберт Шекли",
+//         rating: 8.51,
+//     },
+// ];
+
+// for (const book of books) {
+//     console.log(book.title);
+//     console.log(book.author);
+//     console.log(book.rating);
+// }
+
+
+//========== task
+/*const colors = [
+    { hex: '#f44336', rgb: '244,67,54' },
+    { hex: '#2196f3', rgb: '33,150,243' },
+    { hex: '#4caf50', rgb: '76,175,80' },
+    { hex: '#ffeb3b', rgb: '255,235,59' },
+];
+
+const hexColors = [];
+const rgbColors = [];
 // Change code below this line
-const { yesterday: highYesterday, today: highToday, icon: highIcon = "https://www.flaticon.com/svg/static/icons/svg/2204/2204346.svg", tomorrow: highTomorrow } = highTemperatures;
-/*const highYesterday = highTemperatures.yesterday;
-const highToday = highTemperatures.today;
-const highTomorrow = highTemperatures.tomorrow;
-const highIcon = highTemperatures.icon;*/
 
-// Change code above this line
-const meanTemperature = (highYesterday + highToday + highTomorrow) / 3;
+for (const color of colors) {
+    hexColors.push(color.hex);
+    rgbColors.push(color.rgb);
+}
+
+
+▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼
+
+ */
+
+
+const colors = [
+    { hex: '#f44336', rgb: '244,67,54' },
+    { hex: '#2196f3', rgb: '33,150,243' },
+    { hex: '#4caf50', rgb: '76,175,80' },
+    { hex: '#ffeb3b', rgb: '255,235,59' },
+];
+
+const hexColors = [];
+const rgbColors = [];
+// Change code below this line
+
+for (const { hex, rgb }
+    of colors) {
+    hexColors.push(hex);
+    rgbColors.push(rgb);
+}
