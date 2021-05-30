@@ -1,40 +1,22 @@
 "use strict";
 
-/*====== Общая стоимость товара ======
+/*====== Изменение имени переменной ======
 
-Задание
+Деструктуризация + дефол
+Замени объявления переменных highYesterday, highToday, highTomorrow и highIcon одной операцией деструктуризации свойств объекта highTemperatures. 
+Задай значение по умолчанию для highIcon - строку "https://www.flaticon.com/svg/static/icons/svg/2204/2204346.svg".*/
 
-Напиши функцию calculateTotalPrice(productName) которая принимает один параметр productName - название товара.
- Функция должна вернуть общую стоимость (цена * количество) товара с таким именем из массива products.*/
+const highTemperatures = {
+    yesterday: 28,
+    today: 26,
+    tomorrow: 33,
+};
+// Change code below this line
+const { yesterday: highYesterday, today: highToday, icon: highIcon = "https://www.flaticon.com/svg/static/icons/svg/2204/2204346.svg", tomorrow: highTomorrow } = highTemperatures;
+/*const highYesterday = highTemperatures.yesterday;
+const highToday = highTemperatures.today;
+const highTomorrow = highTemperatures.tomorrow;
+const highIcon = highTemperatures.icon;*/
 
-
-const products = [
-    { name: 'Radar', price: 1300, quantity: 4 },
-    { name: 'Scanner', price: 2700, quantity: 3 },
-    { name: 'Droid', price: 400, quantity: 7 },
-    { name: 'Grip', price: 1200, quantity: 9 },
-];
-
-function calculateTotalPrice(productName) {
-    // Пиши код ниже этой строки
-    for (const product of products) { //     { name: 'Radar', price: 1300, quantity: 4 },
-        if (product.name === productName) {
-            return (product.price * product.quantity)
-        }
-    }
-
-    return "There is no such a product";
-
-}
-console.log(calculateTotalPrice("Droid"));
-
-/*
- *  1 перебрал объкты в массиве
- * 
- *  2 епербрал имена в объектах... 
- * 
- *  3 ... и ЕСЛИ слвпадает с вводимым значением ► 
- * 
- *  4 ► ...выдал значения других свойст объекта умноженые друг на друга
- * 
- */
+// Change code above this line
+const meanTemperature = (highYesterday + highToday + highTomorrow) / 3;
