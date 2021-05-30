@@ -1,13 +1,25 @@
 "use strict";
 
+/** =====Задача. Карточки задач=====
+Задание
+Напиши функцию makeTask(data) которая принимает один параметр data - объект со следующими свойствами.
 
+text - текст задачи.
+category - категория задачи.
+priority - приоритет задачи.
+Функция должна составить и вернуть новый объект задачи, не изменяя напрямую параметр data.
+В новом объекте должно быть свойство completed, значение которого хранится в одноимённой локальной переменной.
 
+В параметре data гарантированно будет только свойство text, а остальные два, category и priority, могут отсутствовать.
+Тогда, в новом объекте задачи, в свойствах category и priority должны быть значения по умолчанию, хранящиеся в одноимённых локальных переменных.
+ */
 
-const firstGroupScores = [64, 42, 93];
-const secondGroupScores = [89, 14, 51, 26];
-const thirdGroupScores = [29, 47, 18, 97, 81];
-// Change code below this line
-const allScores = [...firstGroupScores, ...secondGroupScores, ...thirdGroupScores];
-const bestScore = Math.max(...allScores);
-const worstScore = Math.min(...allScores);
-console.log(bestScore);
+function makeTask(data) {
+    const completed = false;
+    const category = 'General';
+    const priority = 'Normal';
+    // Change code below this line
+    const newData = { completed, category, priority, ...data };
+    return newData;
+    // Change code above this line
+}
