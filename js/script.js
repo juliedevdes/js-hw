@@ -1,25 +1,14 @@
 "use strict";
 
-/** =====Задача. Карточки задач=====
+/** =====Задача=====
 Задание
-Напиши функцию makeTask(data) которая принимает один параметр data - объект со следующими свойствами.
-
-text - текст задачи.
-category - категория задачи.
-priority - приоритет задачи.
-Функция должна составить и вернуть новый объект задачи, не изменяя напрямую параметр data.
-В новом объекте должно быть свойство completed, значение которого хранится в одноимённой локальной переменной.
-
-В параметре data гарантированно будет только свойство text, а остальные два, category и priority, могут отсутствовать.
-Тогда, в новом объекте задачи, в свойствах category и priority должны быть значения по умолчанию, хранящиеся в одноимённых локальных переменных.
- */
-
-function makeTask(data) {
-    const completed = false;
-    const category = 'General';
-    const priority = 'Normal';
-    // Change code below this line
-    const newData = { completed, category, priority, ...data };
-    return newData;
+Используя операцию rest дополни код функции add() так, чтобы она принимала любое количество аргументов, считала и возвращала их сумму.*/
+// Change code below this line
+function add(...args) {
+    let total = 0;
+    for (const arg of args) {
+        total += arg;
+    }
+    return total;
     // Change code above this line
 }
