@@ -1,24 +1,24 @@
 "use strict";
 
-/** =====Задача=====
-Задача. Массив совпадений
-Задание
-Функция findMatches() принимает произвольное количество аргументов. Первым аргументом всегда будет массив чисел, а остальные аргументы будут просто числами.
+/** Задание
+Добавь объекту bookShelf ещё два метода, которые пока что будут возвращать просто строки по аналогии с getBooks() и addBook(bookName).
 
-Дополни код функции так, чтобы она возвращала новый массив matches, в котором будут только те аргументы, начиная со второго, которые есть в массиве первого аргумента.
+Метод removeBook(bookName) будет удалять книгу по имени. Возвращает строку "Deleting book <имя книги>", где <имя книги> это значение параметра bookName.
 
-Например, findMatches([1, 2, 3, 4, 5], 1, 8, 2, 7) должна вернуть массив [1, 2], потому что только они есть в массиве первого аргумента.*/
+Метод updateBook(oldName, newName) будет обновлять название книги на новое. Возвращает строку "Updating book <старое имя> to <новое имя>", где <старое имя> и <новое имя>это значения*/
 
-// Change code below this line
-function findMatches(array, ...rest) {
-    const matches = []; // Don't change this line
-    for (const item of rest) {
-        if (array.includes(item)) {
-            matches.push(item);
-        }
-    }
-    // Change code above this line
-    return matches;
-}
+const bookShelf = {
+    // Change code below this line
+    books: ['The last kingdom', 'The guardian of dreams'],
+    getBooks() {
+        return 'Returning all books';
+    },
+    addBook(bookName) {
+        return `Adding book ${bookName}`;
+    },
+    removeBook(bookName) { return `Deleting book ${bookName}`; },
+    updateBook(oldName, newName) { return `Updating book ${oldName} to ${newName}` }
+};
 
-console.log(findMatches([1, 2, 3, 4, 5], 1, 8, 2, 7));
+
+console.log(bookShelf.addBook("Haze"));
