@@ -1,24 +1,14 @@
 "use strict";
 
-/** Задание
-Добавь объекту bookShelf ещё два метода, которые пока что будут возвращать просто строки по аналогии с getBooks() и addBook(bookName).
-
-Метод removeBook(bookName) будет удалять книгу по имени. Возвращает строку "Deleting book <имя книги>", где <имя книги> это значение параметра bookName.
-
-Метод updateBook(oldName, newName) будет обновлять название книги на новое. Возвращает строку "Updating book <старое имя> to <новое имя>", где <старое имя> и <новое имя>это значения*/
+/** Дополни метод updateBook(oldName, newName) так, чтобы он изменял название книги с oldName на newName в свойстве books. 
+ * Используй indexOf() для того, чтобы найти нужный элемент массива, и splice() для того чтобы заменить этот элемент*/
 
 const bookShelf = {
-    // Change code below this line
-    books: ['The last kingdom', 'The guardian of dreams'],
-    getBooks() {
-        return 'Returning all books';
+    books: ['The last kingdom', 'Haze', 'The guardian of dreams'],
+    updateBook(oldName, newName) {
+        // Change code below this line
+        const index = this.books.indexOf(oldName);
+        this.books.splice(index, 1, newName);
+        // Change code above this line
     },
-    addBook(bookName) {
-        return `Adding book ${bookName}`;
-    },
-    removeBook(bookName) { return `Deleting book ${bookName}`; },
-    updateBook(oldName, newName) { return `Updating book ${oldName} to ${newName}` }
 };
-
-
-console.log(bookShelf.addBook("Haze"));
