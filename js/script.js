@@ -39,18 +39,24 @@ const atTheOldToad = {
         return this.potions;
     },
     addPotion(potionName) {
+        // здесь была ошибка в ворованом решении 
+        this.potions.push(potionName);
+
+        /*
         const { potions } = this;
         const { name } = potionName;
         for (let i = 0; i < potions.length; i += 1) {
             if (potions[i].name === name) {
                 return `Potion ${name} is already equipped!`;
             }
-            potions.push(potionName);
+            potions.push(potionName);  - в результате пушилась трижды - столько, сколько не совпадало. посмотрела и поняла что глупости 
         }
+        */
+
     },
     removePotion(potionName) {
         const { potions } = this;
-        for (let i = 0; i < potions.length; i += 1) {
+        for (let i = 0; i < potions.length; i += 1) { //почему фор? мы не можем запихнуть индекс в переменную, потомучка у свойства объекта как части массива его нет. сплайс тогда не получается применить
             if (potions[i].name === potionName) {
                 potions.splice(i, 1);
                 return potions;
@@ -60,13 +66,21 @@ const atTheOldToad = {
     },
     updatePotionName(oldName, newName) {
         const { potions } = this;
-        for (let i = 0; i < potions.length; i += 1) {
-            if (potions[i].name === oldName) {
-                potions[i].name = newName;
+        for (const potion of potions) { // а здесть можно фор оф. получилось, потому что мы не обращались по индексу, нет сплайса. изменения не в массиве, а в объекте??может поэтому
+            if (potion.name === oldName) {
+                potion.name = newName;
                 return potions;
             }
+            /**
+             *    for (let i = 0; i < potions.length; i += 1) {
+            if (potions[i].name === oldName) {
+                potions[i].name = newName;
+                ====старый вариант====
+             */
         }
         return `Potion ${oldName} is not in inventory!`;
+
+
     },
     // Change code above this line
 };
