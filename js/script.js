@@ -1,26 +1,37 @@
 // === TASK ==== 
 /**
- *   ====Инлайн-колбэки ------
+ *   ====Несколько колбэков------
  * 
- * Задание
-Дополни второй вызов функции makePizza(pizzaName, callback),
+ *Задание
+Необходимо написать логику обработки заказа пиццы. Выполни рефакторинг метода order так, чтобы он принимал вторым и третим параметрами два колбэка onSuccess и onError.
 
-передав вторым аргументом инлайн колбэк-функцию eatPizza(pizzaName), которая логирует строку 'Едим пиццу <имя пиццы>'.
- */
+Если в свойстве pizzas нет пиццы с названием из параметра pizzaName, метод order должен возвращать результат вызова колбэка onError, передавая ему аргументом строку 
+'В ассортименте нет пиццы с названием <имя пиццы>.'
+Если в свойстве pizzas есть пицца с названием из параметра pizzaName, метод order должен возвращать результат вызова колбэка onSuccess, передавая ему аргументом имя заказанной пиццы.
+После объявления объекта pizzaPalace мы добавили колбэки и вызовы методов. Пожалуйста ничего там не меняй.*/
 
-
-function makePizza(pizzaName, callback) {
-    console.log(`Пицца ${pizzaName} готовится, ожидайте...`);
-    callback(pizzaName);
+const pizzaPalace = {
+    pizzas: ['Ультрасыр', 'Аль Копчино', 'Четыре нарезона'],
+    order(pizzaName, onSuccess, onError) {
+        for (let pizza of this.pizzas) {
+            if (pizza === pizzaName) {
+                return onSuccess(pizza)
+            }
+        }
+        return onError((`В ассортименте нет пиццы с названием ${pizzaName}.`))
+    }
+};
+// Пиши код выше этой строки
+// Колбэк для onSuccess
+function makePizza(pizzaName) {
+    return `Ваш заказ принят. Готовим пиццу ${pizzaName}.`;
 }
-
-makePizza('Роял гранд', function deliverPizza(pizzaName) {
-    console.log(`Доставляем пиццу ${pizzaName}.`);
-});
-// Пиши код ниже этой строки
-
-makePizza('Ультрасыр', function eatPizza(pizzaName) { console.log(`Едим пиццу ${pizzaName}`); });
-
-/*Инлайн-колбэки
-Если колбэк-функция маленькая и нужна только для передачи аргументом, её можно объявить прямо при вызове функции в которую передаём колбэк. 
-Такая функция будет доступна только как значение параметра и больше нигде в коде.
+// Колбэк для onError
+function onOrderError(error) {
+    return `Ошибка! ${error}`;
+}
+// Вызовы метода с колбэками
+pizzaPalace.order('Аль Копчино', makePizza, onOrderError);
+pizzaPalace.order('Четыре нарезона', makePizza, onOrderError);
+pizzaPalace.order('Биг майк', makePizza, onOrderError);
+pizzaPalace.order('Венская', makePizza, onOrderError);
