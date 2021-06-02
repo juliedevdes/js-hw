@@ -1,64 +1,103 @@
 // === TASK ==== 
 /**
- *   === Метод bind
-Методы call и apply вызывают функцию «на месте», то есть сразу. Но в случае колбэк-функций, когда необходимо не сразу вызвать функцию, а передать ссылку на неё, причём с привязанным контекстом, используется метод bind.
+ *   === Метод bind и методы объекта
+При передаче методов объекта как колбэк-функций, контекст не сохраняется. Колбэк это ссылка на метод, которая присваивается как значение параметра, вызываемого без объекта.
 
-foo.bind(obj, arg1, arg2, ...)
-Метод bind создаёт и возвращает копию функции foo с привязанным контекстом obj и аргументами arg1, arg2 и т. д. Получается копия функции которую можно передать куда угодно и вызвать когда угодно.
-
-function greet(clientName) {
-  return `${clientName}, добро пожаловать в «${this.service}».`;
-}
-
-const steam = { service: 'Steam' };
-const steamGreeter = greet.bind(steam);
-steamGreeter('Манго'); // "Манго, добро пожаловать в «Steam»."
-
-const gmail = { service: 'Gmail' };
-const gmailGreeter = greet.bind(gmail);
-gmailGreeter('Поли'); // "Поли, добро пожаловать в «Gmail»."
-Задание
-Функция composeMessage(customerName) создаёт приветственные сообщения для ресторанов. 
-Дополни код так, чтобы в переменных pizzaPalaceComposer и burgerShackComposer были её копии с привязанным контекстом к соответствующим объектам.*/
-
-
-const pizzaPalace = {
-    company: 'Pizza Palace',
+const customer = {
+  firstName: 'Jacob',
+  lastName: 'Mercer',
+  getFullName() {
+    return `${this.firstName} ${this.lastName}`;
+  },
 };
 
-const burgerShack = {
-    company: 'Burger Shack',
+function makeMessage(callback) {
+  // callback() это вызов метода getFullName без объекта
+  console.log(`Обрабатываем заявку от ${callback()}.`);
+}
+
+makeMessage(customer.getFullName); // Будет ошибка при вызове функции
+В строгом режиме, значение this в методе getFullName, при вызове как колбэк-функции callback(), будет undefined. При обращении к свойствам firstName и lastName будет ошибка, так как undefined это не объект.
+
+Метод bind используется для привязки контекста при передаче методов объекта как колбэк-функций. Передадим колбэком не оригинальный метод getFullName, а его копию с привязанным контекстом к объекту customer.
+
+//  Было
+makeMessage(customer.getFullName); // Будет ошибка при вызове функции
+
+//  Стало
+makeMessage(customer.getFullName.bind(customer)); // Обрабатываем заявку от Jacob Mercer.
+
+
+
+====== Задание =====
+
+Сервису рассылки электронной почты необходимо добавить логирование действий для сбора статистики. 
+Функция logAndInvokeAction(email, action) ожидает почту и действие которое нужно выполнить - ссылку на метод объекта service. 
+Сбор статистики симулируется логированием строки. Разберись и дополни код так, чтобы он работал верно.*/
+
+const service = {
+    mailingList: ['mango@mail.com', 'poly@hotmail.de', 'ajax@jmail.net'],
+    subscribe(email) {
+        this.mailingList.push(email);
+        return `Почта ${email} добавлена в рассылку.`;
+    },
+    unsubscribe(email) {
+        this.mailingList = this.mailingList.filter((e) => e !== email);
+        return `Почта ${email} удалена из рассылки.`;
+    },
 };
 
-function composeMessage(customerName) {
-    return `${customerName}, всегда рады вас видеть в «${this.company}».`;
+function logAndInvokeAction(email, action) {
+    console.log(`Выполняем действие с ${email}.`);
+    return action(email);
 }
-// Пиши код ниже этой строки
 
-const pizzaPalaceComposer = composeMessage.bind(pizzaPalace);
-const pizzaPalaceMessage = pizzaPalaceComposer('Манго');
+const firstInvoke = logAndInvokeAction('kiwi@mail.uk', service.subscribe.bind(service)); //`service.subscribe` привязан к объекту`service`
+console.log(firstInvoke);
+// Почта kiwi@mail.uk добавлена в рассылку.
 
-const burgerShackComposer = composeMessage.bind(burgerShack);
-const burgerShackMessage = burgerShackComposer('Поли');
+console.log(service.mailingList);
+/* ['mango@mail.com', 
+    'poly@hotmail.de', 
+    'ajax@jmail.net', 
+    'kiwi@mail.uk']*/
+const secondInvoke = logAndInvokeAction('poly@hotmail.de', service.unsubscribe.bind(service)); // `service.unsubscribe` привязан к объекту`service`
+console.log(secondInvoke);
+// Почта poly@hotmail.de удалена из рассылки.
+
+console.log(service.mailingList); // ['mango@mail.com', 'ajax@jmail.net', 'kiwi@mail.uk']
 
 
 // исходный
-//
-// const pizzaPalace = {
-//   company: 'Pizza Palace',
+
+// const service = {
+//     mailingList: ['mango@mail.com', 'poly@hotmail.de', 'ajax@jmail.net'],
+//     subscribe(email) {
+//         this.mailingList.push(email);
+//         return `Почта ${email} добавлена в рассылку.`;
+//     },
+//     unsubscribe(email) {
+//         this.mailingList = this.mailingList.filter((e) => e !== email);
+//         return `Почта ${email} удалена из рассылки.`;
+//     },
 // };
 
-// const burgerShack = {
-//   company: 'Burger Shack',
-// };
-
-// function composeMessage(customerName) {
-//   return `${customerName}, всегда рады вас видеть в «${this.company}».`;
+// function logAndInvokeAction(email, action) {
+//     console.log(`Выполняем действие с ${email}.`);
+//     return action(email);
 // }
-// // Пиши код ниже этой строки
 
-// const pizzaPalaceComposer = composeMessage;
-// const pizzaPalaceMessage = pizzaPalaceComposer('Манго');
+// const firstInvoke = logAndInvokeAction('kiwi@mail.uk', service.subscribe);
+// console.log(firstInvoke);
+// // Почта kiwi@mail.uk добавлена в рассылку.
 
-// const burgerShackComposer = composeMessage;
-// const burgerShackMessage = burgerShackComposer('Поли');
+// console.log(service.mailingList);
+// /* ['mango@mail.com', 
+//     'poly@hotmail.de', 
+//     'ajax@jmail.net', 
+//     'kiwi@mail.uk']*/
+// const secondInvoke = logAndInvokeAction('poly@hotmail.de', service.unsubscribe);
+// console.log(secondInvoke);
+// // Почта poly@hotmail.de удалена из рассылки.
+
+// console.log(service.mailingList); // ['mango@mail.com', 'ajax@jmail.net', 'kiwi@mail.uk']
