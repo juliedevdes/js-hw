@@ -1,35 +1,46 @@
 // === TASK ==== 
 /**
- *   ===  
- * Задача. Аккаунт пользователя
-Задание
-Перед увольнением разработчик сломал исходный код управления аккаунтами пользователей нашего сервиса доставки еды. 
-Выполни рефакторинг методов объекта customer, расставив отсутствующие this при обращении к свойствам объекта.
+ *   ===  Метод call
+Бывают ситуации когда функцию нужно вызвать в контексте какого-то объекта, при этом функция не является его методом. Для этого у функций есть методы call и apply.
 
-После объявления объекта мы добавили вызовы методов в той последовательности, в которой твой код будут проверять тесты. Пожалуйста ничего там не меняй..*/
 
-const pizzaPalace = {
-    pizzas: ['Ультрасыр', 'Аль Копчино', 'Четыре нарезона'],
-    order(pizzaName, onSuccess, onError) {
-        for (let pizza of this.pizzas) {
-            if (pizza === pizzaName) {
-                return onSuccess(pizza)
-            }
-        }
-        return onError((`В ассортименте нет пиццы с названием ${pizzaName}.`))
-    }
-};
-// Пиши код выше этой строки
-// Колбэк для onSuccess
-function makePizza(pizzaName) {
-    return `Ваш заказ принят. Готовим пиццу ${pizzaName}.`;
+
+
+ * Задание
+Сервису приготовления и доставки еды требуется функция генерации сообщений о статусе заказа.
+
+Дополни функцию composeMessage(position) так, чтобы она возвращала строку в формате 'Готовим <блюдо> для <почта>. Ваш заказ <позиция>-й в очереди.' 
+Позиция это значение параметра position - позиция элемента в массиве (на единицу больше чем индекс).
+
+Не объявляй дополнительные параметры функции composeMessage(position).
+Используй call для вызова функции в контексте одного объекта-заказа.
+Используй this в теле функции для доступа к свойствам объекта-заказа в контексте которого она была вызывана.
+Дополни код так, чтобы в переменной messages получился массив сообщений о статусе заказов из массива orders с помощью цикла for.*/
+
+
+const orders = [
+    { email: "solomon@topmail.ua", dish: "Burger" },
+    { email: "artemis@coldmail.net", dish: "Pizza" },
+    { email: "jacob@mail.com", dish: "Taco" },
+];
+// Пиши код ниже этой строки
+function composeMessage(position) {
+    return `Готовим ${this.dish} для ${this.email}. Ваш заказ ${position}-й в очереди.`;
 }
-// Колбэк для onError
-function onOrderError(error) {
-    return `Ошибка! ${error}`;
+const messages = [];
+for (let i = 0; i < orders.length; i += 1) {
+    messages.push(composeMessage.call(orders[i], i + 1));
 }
-// Вызовы метода с колбэками
-pizzaPalace.order('Аль Копчино', makePizza, onOrderError);
-pizzaPalace.order('Четыре нарезона', makePizza, onOrderError);
-pizzaPalace.order('Биг майк', makePizza, onOrderError);
-pizzaPalace.order('Венская', makePizza, onOrderError);
+
+// исходный
+//
+// const orders = [
+//     { email: 'solomon@topmail.ua', dish: 'Burger' },
+//     { email: 'artemis@coldmail.net', dish: 'Pizza' },
+//     { email: 'jacob@mail.com', dish: 'Taco' },
+// ];
+
+// // Пиши код ниже этой строки
+// function composeMessage(position) {}
+
+// const messages = [];
