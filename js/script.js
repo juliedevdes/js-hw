@@ -1,103 +1,47 @@
 // === TASK ==== 
 /**
- *   === Метод bind и методы объекта
-При передаче методов объекта как колбэк-функций, контекст не сохраняется. Колбэк это ссылка на метод, которая присваивается как значение параметра, вызываемого без объекта.
+ * 
+ * С помощью Function Declaration напиши функцию-конструктор Storage, которая будет создавать объекты для управления складом товаров. Функция ожидает только один аргумент - начальный массив товаров, который записывается на создаваемый объект в свойство items.
 
-const customer = {
-  firstName: 'Jacob',
-  lastName: 'Mercer',
-  getFullName() {
-    return `${this.firstName} ${this.lastName}`;
-  },
+Добавь методы на прототип:
+
+getItems() - возвращает массив текущих товаров в свойстве items объекта, который вызывает этот метод.
+addItem(newItem) - принимает новый товар newItem и добавляет его в массив товаров в свойстве items объекта, который вызывает этот метод.
+removeItem(item) - принимает товар item и удаляет его из массива товаров в свойстве items объекта, который вызывает этот метод.
+Под комментарием мы добавили инициализацию экземпляра и вызовы методов в той последовательности, в которой твой код будут проверять тесты. Пожалуйста ничего там не меняй.
+ * 
+ * function Car({ brand, model, price }) {
+  this.brand = brand;
+  this.model = model;
+  this.price = price;
+
+  
+const messages = [];
+for (let i = 0; i < orders.length; i += 1) {
+    messages.push(composeMessage.call(orders[i], i + 1));
+}
+ * 
+ */
+
+
+function Storage(items) { this.items = items };
+Storage.prototype.getItems = function() { return this.items; };
+
+Storage.prototype.addItem = function(newItem) { this.items.push(newItem); };
+
+Storage.prototype.removeItem = function(item) {
+    for (let i = 0; i < this.items.length; i += 1) {
+        if (this.items[i] === item) {
+            this.items.splice(i, 1);
+        }
+    }
 };
 
-function makeMessage(callback) {
-  // callback() это вызов метода getFullName без объекта
-  console.log(`Обрабатываем заявку от ${callback()}.`);
-}
 
-makeMessage(customer.getFullName); // Будет ошибка при вызове функции
-В строгом режиме, значение this в методе getFullName, при вызове как колбэк-функции callback(), будет undefined. При обращении к свойствам firstName и lastName будет ошибка, так как undefined это не объект.
-
-Метод bind используется для привязки контекста при передаче методов объекта как колбэк-функций. Передадим колбэком не оригинальный метод getFullName, а его копию с привязанным контекстом к объекту customer.
-
-//  Было
-makeMessage(customer.getFullName); // Будет ошибка при вызове функции
-
-//  Стало
-makeMessage(customer.getFullName.bind(customer)); // Обрабатываем заявку от Jacob Mercer.
-
-
-
-====== Задание =====
-
-Сервису рассылки электронной почты необходимо добавить логирование действий для сбора статистики. 
-Функция logAndInvokeAction(email, action) ожидает почту и действие которое нужно выполнить - ссылку на метод объекта service. 
-Сбор статистики симулируется логированием строки. Разберись и дополни код так, чтобы он работал верно.*/
-
-const service = {
-    mailingList: ['mango@mail.com', 'poly@hotmail.de', 'ajax@jmail.net'],
-    subscribe(email) {
-        this.mailingList.push(email);
-        return `Почта ${email} добавлена в рассылку.`;
-    },
-    unsubscribe(email) {
-        this.mailingList = this.mailingList.filter((e) => e !== email);
-        return `Почта ${email} удалена из рассылки.`;
-    },
-};
-
-function logAndInvokeAction(email, action) {
-    console.log(`Выполняем действие с ${email}.`);
-    return action(email);
-}
-
-const firstInvoke = logAndInvokeAction('kiwi@mail.uk', service.subscribe.bind(service)); //`service.subscribe` привязан к объекту`service`
-console.log(firstInvoke);
-// Почта kiwi@mail.uk добавлена в рассылку.
-
-console.log(service.mailingList);
-/* ['mango@mail.com', 
-    'poly@hotmail.de', 
-    'ajax@jmail.net', 
-    'kiwi@mail.uk']*/
-const secondInvoke = logAndInvokeAction('poly@hotmail.de', service.unsubscribe.bind(service)); // `service.unsubscribe` привязан к объекту`service`
-console.log(secondInvoke);
-// Почта poly@hotmail.de удалена из рассылки.
-
-console.log(service.mailingList); // ['mango@mail.com', 'ajax@jmail.net', 'kiwi@mail.uk']
-
-
-// исходный
-
-// const service = {
-//     mailingList: ['mango@mail.com', 'poly@hotmail.de', 'ajax@jmail.net'],
-//     subscribe(email) {
-//         this.mailingList.push(email);
-//         return `Почта ${email} добавлена в рассылку.`;
-//     },
-//     unsubscribe(email) {
-//         this.mailingList = this.mailingList.filter((e) => e !== email);
-//         return `Почта ${email} удалена из рассылки.`;
-//     },
-// };
-
-// function logAndInvokeAction(email, action) {
-//     console.log(`Выполняем действие с ${email}.`);
-//     return action(email);
-// }
-
-// const firstInvoke = logAndInvokeAction('kiwi@mail.uk', service.subscribe);
-// console.log(firstInvoke);
-// // Почта kiwi@mail.uk добавлена в рассылку.
-
-// console.log(service.mailingList);
-// /* ['mango@mail.com', 
-//     'poly@hotmail.de', 
-//     'ajax@jmail.net', 
-//     'kiwi@mail.uk']*/
-// const secondInvoke = logAndInvokeAction('poly@hotmail.de', service.unsubscribe);
-// console.log(secondInvoke);
-// // Почта poly@hotmail.de удалена из рассылки.
-
-// console.log(service.mailingList); // ['mango@mail.com', 'ajax@jmail.net', 'kiwi@mail.uk']
+// Пиши код выше этой строки
+const storage = new Storage(['Нанитоиды', 'Пролонгер', 'Антигравитатор']);
+console.log(storage.getItems()); // ["Нанитоиды", "Пролонгер", "Антигравитатор"]
+storage.addItem('Дроид');
+console.log(storage.getItems()); // ["Нанитоиды", "Пролонгер", "Антигравитатор", "Дроид"]
+storage.removeItem('Пролонгер');
+console.log(storage.getItems()); // ["Нанитоиды", "Антигравитатор", "Дроид"]
