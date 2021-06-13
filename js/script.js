@@ -1,78 +1,48 @@
 // === TASK ===
 
-/*
+// Выполни рефакторинг класса Car. Сделай свойства model и price приватными, также как #brand.
+//Стандартизируй публичный интерфейс класса заменив уже объявленные методы на геттеры и сеттеры brand,
+// model и price для взаимодействия с приватными свойствами.
 
-Задача. Конструктор строк 2.0
-Задание
-Выполни рефакторинг заменив функцию-конструктор StringBuilder на класс с методами. 
-Сделай так, чтобы свойство value было приватным.
+// Геттеры и сеттеры
+// Геттеры и сеттеры - это более краткий синтаксис объявления методов для взаимодействия со свойствами.
+// Геттер и сеттер имитируют обычное публичное свойство класса, но позволяют изменять другие свойства более удобным способом. Геттер выполняется при попытке получить значение свойства, а сеттер - при попытке его изменить.
 
-Под комментарием мы добавили инициализацию экземпляра и вызовы методов в той последовательности, в которой твой код будут проверять тесты. 
-Пожалуйста ничего там не меняй.
+// Геттеры и сеттеры хорошо использовать для простых операций чтения и изменения значения свойств, особенно приватных, как их публичный интерфейс.
+// Для работы со свойством которое хранит массив или объект они не подойдут..
 
+class Car {
+  #model;
+  #price;
+  #brand;
 
-*/
-class StringBuilder {
-  #value;
-  constructor(baseValue) {
-    this.#value = baseValue;
+  constructor({ brand, model, price }) {
+    this.#brand = brand;
+    this.#model = model;
+    this.#price = price;
   }
-  getValue() {
-    return this.#value;
+
+  get brand() {
+    return this.#brand;
   }
-  padEnd(str) {
-    this.#value += str;
+
+  set brand(newBrand) {
+    this.#brand = newBrand;
   }
-  padStart(str) {
-    this.#value = str + this.#value;
+
+  get model() {
+    return this.#model;
   }
-  padBoth(str) {
-    this.padStart(str);
-    this.padEnd(str);
+
+  set model(newModel) {
+    this.#model = newModel;
+  }
+
+  get price() {
+    return this.#price;
+  }
+
+  set price(newPrice) {
+    this.#price = newPrice;
   }
 }
-// Пиши код выше этой строки
-const builder = new StringBuilder(".");
-console.log(builder.getValue()); // '.'
-builder.padStart("^");
-console.log(builder.getValue()); // '^.'
-builder.padEnd("^");
-console.log(builder.getValue()); // '^.^'
-builder.padBoth("=");
-console.log(builder.getValue()); // '=^.^='
-
-/* task
-
-function StringBuilder(baseValue) {
-  this.value = baseValue;
-}
-
-StringBuilder.prototype.getValue = function () {
-  return this.value;
-};
-
-StringBuilder.prototype.padEnd = function (str) {
-  this.value += str;
-};
-
-StringBuilder.prototype.padStart = function (str) {
-  this.value = str + this.value;
-};
-
-StringBuilder.prototype.padBoth = function (str) {
-  this.padStart(str);
-  this.padEnd(str);
-};
-
-// Пиши код выше этой строки
-const builder = new StringBuilder('.');
-console.log(builder.getValue()); // '.'
-builder.padStart('^');
-console.log(builder.getValue()); // '^.'
-builder.padEnd('^');
-console.log(builder.getValue()); // '^.^'
-builder.padBoth('=');
-console.log(builder.getValue()); // '=^.^='
-
-
-*/
