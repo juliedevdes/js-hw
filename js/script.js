@@ -1,24 +1,26 @@
-// Задача. Общие элементы
 // Задание
-// Функция getCommonElements(firstArray, secondArray) принимает два массива произвольной длины в параметры firstArray и secondArray,
-// и возвращает новый массив их общих элементов, то есть тех которые есть в обоих массивах.
+// Выполни рефакторинг функции calculateTotalPrice(orderedItems) заменив её объявление на стрелочную функцию.
+// Замени коллбек-функцию передаваемую в метод forEach() на стрелочную функцию.
 
-// Выполни рефакторинг функции так, чтобы вместо цикла for она использовала метод forEach.
+// Пиши код ниже этой строки
+const calculateTotalPrice = (orderedItems) => {
+  let totalPrice = 0;
 
-function getCommonElements(firstArray, secondArray) {
-  const commonElements = [];
-  // Пиши код ниже этой строки
+  orderedItems.forEach((item) => (totalPrice += item));
+  return totalPrice;
+};
+// Пиши код выше этой строки
 
-  // for (let i = 0; i < firstArray.length; i += 1) {
-  //   if (secondArray.includes(firstArray[i])) {
-  //     commonElements.push(firstArray[i]);
-  //   }
-  // }
-  firstArray.forEach((item) => {
-    if (secondArray.includes(item)) {
-      commonElements.push(item);
-    }
-  });
-  return commonElements;
-  // Пиши код выше этой строки
-}
+// source
+
+// // Пиши код ниже этой строки
+// function calculateTotalPrice(orderedItems) {
+//   let totalPrice = 0;
+
+//   orderedItems.forEach(function (item) {
+//     totalPrice += item;
+//   });
+
+//   return totalPrice;
+// }
+// // Пиши код выше этой строки
