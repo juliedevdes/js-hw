@@ -1,24 +1,24 @@
-// Задача. Фильтрация массива чисел
+// Задача. Общие элементы
 // Задание
-// Функция filterArray(numbers, value) принимает массив чисел numbers и возвращает новый массив,
-// в котором будут только те элементы оригинального массива, которые больше чем значение параметра value.
+// Функция getCommonElements(firstArray, secondArray) принимает два массива произвольной длины в параметры firstArray и secondArray,
+// и возвращает новый массив их общих элементов, то есть тех которые есть в обоих массивах.
 
 // Выполни рефакторинг функции так, чтобы вместо цикла for она использовала метод forEach.
 
-function filterArray(numbers, value) {
-  const filteredNumbers = [];
+function getCommonElements(firstArray, secondArray) {
+  const commonElements = [];
   // Пиши код ниже этой строки
 
-  // for (let i = 0; i < numbers.length; i += 1) {
-  //   if (numbers[i] > value) {
-  //     filteredNumbers.push(numbers[i]);
+  // for (let i = 0; i < firstArray.length; i += 1) {
+  //   if (secondArray.includes(firstArray[i])) {
+  //     commonElements.push(firstArray[i]);
   //   }
   // }
-  numbers.forEach((number) => {
-    if (number > value) {
-      filteredNumbers.push(number);
+  firstArray.forEach((item) => {
+    if (secondArray.includes(item)) {
+      commonElements.push(item);
     }
   });
+  return commonElements;
   // Пиши код выше этой строки
-  return filteredNumbers;
 }
