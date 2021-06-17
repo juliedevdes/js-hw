@@ -1,26 +1,31 @@
+// Задача. Фильтрация массива чисел 2.0
 // Задание
-// Выполни рефакторинг функции calculateTotalPrice(orderedItems) заменив её объявление на стрелочную функцию.
-// Замени коллбек-функцию передаваемую в метод forEach() на стрелочную функцию.
+// Замени объявление функции filterArray() и коллбек для метода forEach() на стрелочные функции.
 
 // Пиши код ниже этой строки
-const calculateTotalPrice = (orderedItems) => {
-  let totalPrice = 0;
+const filterArray = (numbers, value) => {
+  const filteredNumbers = [];
 
-  orderedItems.forEach((item) => (totalPrice += item));
-  return totalPrice;
+  numbers.forEach((number) => {
+    if (number > value) {
+      filteredNumbers.push(number);
+    }
+  });
+
+  // Пиши код выше этой строки
+  return filteredNumbers;
 };
-// Пиши код выше этой строки
-
-// source
 
 // // Пиши код ниже этой строки
-// function calculateTotalPrice(orderedItems) {
-//   let totalPrice = 0;
+// function filterArray(numbers, value) {
+//   const filteredNumbers = [];
 
-//   orderedItems.forEach(function (item) {
-//     totalPrice += item;
+//   numbers.forEach(function (number) {
+//     if (number > value) {
+//       filteredNumbers.push(number);
+//     }
 //   });
 
-//   return totalPrice;
+//   // Пиши код выше этой строки
+//   return filteredNumbers;
 // }
-// // Пиши код выше этой строки
