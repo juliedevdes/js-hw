@@ -2,14 +2,20 @@
 
 // ------ TASK ------
 // Задание
-// Онлайн бибилиотеке необходимо отображать книги сортированные по дате издания, по её возрастанию или убыванию. Дополни код так, чтобы в переменной ascendingReleaseDates получилась отсортированная по возрастанию копия массива releaseDates,
-// а в переменной descendingReleaseDates копия отсортированная по убыванию.
+// Онлайн бибилиотеке необходимо отображать книги отсортированные по автору, в алфавитном и обратном алфавитном порядке. Дополни код так, чтобы в переменной authorsInAlphabetOrder получилась отсортированная по алфавиту копия массива authors,
+// а в переменной authorsInReversedOrder копия отсортированная в обратном алфавитном порядке.
 
-const releaseDates = [2016, 1967, 2008, 1984, 1973, 2012, 1997];
+const authors = [
+  "Ли Танит",
+  "Бернард Корнуэлл",
+  "Роберт Шекли",
+  "Федор Достоевский",
+  "Говард Лавкрафт",
+];
 // Пиши код ниже этой строки
 
-const ascendingReleaseDates = [...releaseDates].sort();
+const authorsInAlphabetOrder = [...authors].sort();
 
-const descendingReleaseDates = [...releaseDates].sort(
-  (first, next) => next - first
+const authorsInReversedOrder = [...authors].sort((first, next) =>
+  next.localeCompare(first)
 );
