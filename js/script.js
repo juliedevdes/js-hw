@@ -2,8 +2,7 @@
 
 // ------ TASK ------
 // Задание
-// Дополни функцию sortByDescendingFriendCount(users) так,
-//  чтобы она возвращала массив пользователей отсортированный по убыванию количества их друзей (свойство friends).
+// Дополни функцию sortByName(users) так, чтобы она возвращала массив пользователей отсортированный по их имени (свойство name) в алфавитном порядке.
 
 const testArray = [
   {
@@ -70,8 +69,7 @@ const testArray = [
     gender: "female",
   },
 ];
-
 // Пиши код ниже этой строки
-const sortByDescendingFriendCount = (users) =>
-  [...users].sort((curr, next) => next.friends.length - curr.friends.length);
+const sortByName = (users) =>
+  [...users].sort((curr, next) => curr.name.localeCompare(next.name));
 // Пиши код выше этой строки
