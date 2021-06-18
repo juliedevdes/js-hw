@@ -1,7 +1,12 @@
-//Задание
-// Дополни функцию getUsersWithAge(users, minAge, maxAge) так, чтобы она возвращала массив пользователей,
-//возраст которых (свойство age) попадает в промежуток от minAge до maxAge.
+// -----
 
-const getUsersWithAge = (users, minAge, maxAge) =>
-  users.filter((user) => user.age <= maxAge && user.age >= minAge);
+// ------ TASK ------
+
+// Задание
+// Дополни функцию getUsersWithFriend(users, friendName) так, чтобы она возвращала массив пользователей у которых есть друг с именем в параметре friendName.
+// Массив друзей пользователя хранится в свойстве friends.
+
+// Пиши код ниже этой строки
+const getUsersWithFriend = (users, friendName) =>
+  users.filter((user) => user.friends.includes(friendName));
 // Пиши код выше этой строки
