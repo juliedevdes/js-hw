@@ -2,9 +2,9 @@
 
 // ------ TASK ------
 // Задание
-// Дополни функцию getNamesSortedByFriendCount(users) так,
-// чтобы она возвращала массив имён пользователей
-// отсортированный по возрастанию количества их друзей (свойство friends
+// Дополни функцию getSortedFriends(users) так, чтобы
+// она возвращала массив уникальных имён друзей (свойство friends)
+// отсортированный по алфавиту
 
 const testArray = [
   {
@@ -77,9 +77,9 @@ const testArray = [
   },
 ];
 
-// Пиши код ниже этой строки
-const getNamesSortedByFriendCount = (users) =>
+const getSortedFriends = (users) =>
   [...users]
-    .sort((curr, next) => curr.friends.length - next.friends.length)
-    .map((user) => user.name);
-// Пиши код выше этой строки
+    .flatMap((user) => user.friends)
+    .filter((user, index, array) => array.indexOf(user) === index)
+    .sort();
+console.log(getSortedFriends(testArray));
