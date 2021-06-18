@@ -2,11 +2,10 @@
 
 // ------ TASK ------
 // Задание
-// Дополни функцию getSortedFriends(users) так, чтобы
-// она возвращала массив уникальных имён друзей (свойство friends)
-// отсортированный по алфавиту
+// Дополни функцию getTotalBalanceByGender(users, gender) так,
+//  чтобы она возвращала общий баланс пользователей (свойство balance), пол которых (свойство gender) совпадает со значением параметра gender.
 
-const testArray = [
+[
   {
     name: "Moore Hensley",
     email: "moorehensley@indexia.com",
@@ -77,9 +76,11 @@ const testArray = [
   },
 ];
 
-const getSortedFriends = (users) =>
+// Пиши код ниже этой строки
+const getTotalBalanceByGender = (users, gender) =>
   [...users]
-    .flatMap((user) => user.friends)
-    .filter((user, index, array) => array.indexOf(user) === index)
-    .sort();
-console.log(getSortedFriends(testArray));
+    .filter((user) => user.gender === gender)
+    .reduce((acc, user) => acc + user.balance, 0);
+// Пиши код выше этой строки
+
+console.log();
