@@ -2,8 +2,8 @@
 
 // ------ TASK ------
 // Задание
-// Дополни функцию sortByAscendingBalance(users) так, чтобы она возвращала массив пользователей отсортированный по возрастанию их баланса
-//  (свойство balance).
+// Дополни функцию sortByDescendingFriendCount(users) так,
+//  чтобы она возвращала массив пользователей отсортированный по убыванию количества их друзей (свойство friends).
 
 const testArray = [
   {
@@ -72,6 +72,6 @@ const testArray = [
 ];
 
 // Пиши код ниже этой строки
-const sortByAscendingBalance = (users) =>
-  [...users].sort((curr, next) => curr.balance - next.balance);
+const sortByDescendingFriendCount = (users) =>
+  [...users].sort((curr, next) => next.friends.length - curr.friends.length);
 // Пиши код выше этой строки
