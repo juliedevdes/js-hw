@@ -1,24 +1,11 @@
 // -----
 
 // ------ TASK ------
+//Задание
+// Дополни функцию calculateTotalBalance(users) так, чтобы она считала и возвращала сумму всех средств (свойство balance)
+//которые хранят пользователи из массива users.
 
-// Задание
-// Нашему сервису необходимо рассчитать среднее время проведённое в одной игре для каждого игрока, и получить общую сумму этих времён. Рассчитать время для каждого из игроков,
-// можно разделив его время (свойство playtime) на количество игр (свойство gamesPlayed).
-
-const players = [
-  { name: "Манго", playtime: 1270, gamesPlayed: 4 },
-  { name: "Поли", playtime: 469, gamesPlayed: 2 },
-  { name: "Аякс", playtime: 690, gamesPlayed: 3 },
-  { name: "Киви", playtime: 241, gamesPlayed: 1 },
-];
 // Пиши код ниже этой строки
-
-const totalAveragePlaytimePerGame = players.reduce(
-  (acc, player) => acc + player.playtime / player.gamesPlayed,
-  0
-);
-// const totalPlayTime = playtimes.reduce((acc, playtime) => acc + playtime, 0);
-
-// // Пиши код выше этой строки
-// const averagePlayTime = totalPlayTime / playtimes.length;
+const calculateTotalBalance = (users) =>
+  users.reduce((acc, user) => acc + user.balance, 0);
+// Пиши код выше этой строки
