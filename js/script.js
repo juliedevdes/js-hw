@@ -7,6 +7,13 @@
 // Массив друзей пользователя хранится в свойстве friends.
 
 // Пиши код ниже этой строки
-const getUsersWithFriend = (users, friendName) =>
-  users.filter((user) => user.friends.includes(friendName));
+const getFriends = (users) => {
+  const userAllFriends = users.flatMap((user) => user.friends);
+  return userAllFriends.filter(
+    (friend, index, array) => array.indexOf(friend) === index
+  );
+};
 // Пиши код выше этой строки
+// const uniqueGenres = allGenres.filter(
+//     (book, index, array) => array.indexOf(book) === index
+//   );
